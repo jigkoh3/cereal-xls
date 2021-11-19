@@ -13,8 +13,8 @@ const getOnlineOrders = new Promise((resolve, reject) => {
 
         const res = JSON.parse(response.body);
         const result = res.data.filter((data) => {
-            // return data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'CEREALORDER' && data.payments[0].transactionDateandTime.startsWith('2021-11-17')
-            return data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'CEREALORDER' && ['2021111603012556','2021111603004624','2021111602594698','2021111601254139'].includes(data.id)
+            return data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'CEREALORDER' && data.payments[0].transactionDateandTime.startsWith('2021-11-19')
+            // return data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'CEREALORDER' && ['2021111603012556','2021111603004624','2021111602594698','2021111601254139'].includes(data.id)
         })
         resolve(result);
 
@@ -52,7 +52,7 @@ getOnlineOrders.then((res) => {
         i++;
     });
 
-    workbook.write('รายการจัดส่งซีเรียสซีเรียล-20211116(เพิ่มเติม).xlsx');
+    workbook.write('รายการจัดส่งซีเรียสซีเรียล-20211119.xlsx');
 })
 
 
