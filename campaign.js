@@ -13,7 +13,7 @@ const getOnlineOrders = new Promise((resolve, reject) => {
 
         const res = JSON.parse(response.body);
         const result = res.data.filter((data) => {
-            return data.items[0].qty >= 100 && data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'SHAREHOLDER' && new Date(data.payments[0].transactionDateandTime) > new Date('2021-09-30');
+            return data.items[0].qty >= 100 && data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'SHAREHOLDER' && new Date(data.payments[0].transactionDateandTime) > new Date('2021-10-01') && new Date(data.payments[0].transactionDateandTime) < new Date('2021-12-06');
         })
         resolve(result);
 
