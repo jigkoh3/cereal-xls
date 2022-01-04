@@ -13,7 +13,7 @@ const getOnlineOrders = new Promise((resolve, reject) => {
 
         const res = JSON.parse(response.body);
         const result = res.data.filter((data) => {
-            return data.items[0].qty >= 100 && data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'SHAREHOLDER' && new Date(data.payments[0].transactionDateandTime) > new Date('2021-12-06') && new Date(data.payments[0].transactionDateandTime) < new Date('2021-12-15');
+            return data.items[0].qty >= 100 && data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'SHAREHOLDER' && new Date(data.payments[0].transactionDateandTime) > new Date('2021-12-15') && new Date(data.payments[0].transactionDateandTime) < new Date('2021-12-31');
             // return data.payments.length > 0 && data.payments[0].billPaymentRef2 === 'SHAREHOLDER' && new Date(data.payments[0].transactionDateandTime) < new Date('2021-11-01');
         })
         resolve(result);
@@ -67,7 +67,7 @@ getOnlineOrders.then((res) => {
             i++;
         });
 
-        workbook.write(`รายงานซื้อหุ้น100หุ้นขึ้รไปตั่งแต่วันที่วันที่ 06-12-2564 ถึง 14-12-2564.xlsx`);
+        workbook.write(`รายงานซื้อหุ้น100หุ้นขึ้นไปตั่งแต่วันที่วันที่ 15-12-2564 ถึง 31-12-2564.xlsx`);
     });
 
 
