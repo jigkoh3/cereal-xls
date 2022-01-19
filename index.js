@@ -1,14 +1,16 @@
 var request = require('request');
 var excel = require('excel4node');
 
-const orderIn = '2022-01-12';
+const token = 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGUxNmQ4ZDE0OWNmMzAwMTkyYzk1Y2QiLCJmaXJzdE5hbWUiOiJUaGVlcmFzYWsiLCJsYXN0TmFtZSI6IlR1YnJpdCIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTY0MjE3MDg5MSwiZXhwIjoxNjQ5MzcwODkxfQ.ZEGH9NprHgqx6ivms1DWXVIuVTNmkTQY6YDSptXLXVU'
+
+const orderIn = '2022-01-18';
 
 const getOnlineOrders = new Promise((resolve, reject) => {
     var options = {
         'method': 'GET',
         'url': 'https://api.thamturakit.com/api/orders?channel=%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%AD%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%A5%E0%B8%99%E0%B9%8C',
         'headers': {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGUxNmQ4ZDE0OWNmMzAwMTkyYzk1Y2QiLCJmaXJzdE5hbWUiOiJUaGVlcmFzYWsiLCJsYXN0TmFtZSI6IlR1YnJpdCIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTYzNDg1NjMyNCwiZXhwIjoxNjQyMDU2MzI0fQ.yPvp-t5yJN_Vu1yYCgZOhxB4m7qRAXsZMl4jPujGuhU'
+            'Authorization': token
         }
     };
     request(options, function (error, response) {
@@ -28,7 +30,7 @@ const getKhaokwanOrders = new Promise((resolve, reject) => {
         'method': 'GET',
         'url': 'https://api.thamturakit.com/api/orders?channel=%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%AD%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%A5%E0%B8%99%E0%B9%8C',
         'headers': {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGUxNmQ4ZDE0OWNmMzAwMTkyYzk1Y2QiLCJmaXJzdE5hbWUiOiJUaGVlcmFzYWsiLCJsYXN0TmFtZSI6IlR1YnJpdCIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTYzNDg1NjMyNCwiZXhwIjoxNjQyMDU2MzI0fQ.yPvp-t5yJN_Vu1yYCgZOhxB4m7qRAXsZMl4jPujGuhU'
+            'Authorization': token
         }
     };
     request(options, function (error, response) {
@@ -48,7 +50,7 @@ const getKhaomaiOrders = new Promise((resolve, reject) => {
         'method': 'GET',
         'url': 'https://api.thamturakit.com/api/orders?channel=%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%AD%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%A5%E0%B8%99%E0%B9%8C',
         'headers': {
-            'Authorization': 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2MGUxNmQ4ZDE0OWNmMzAwMTkyYzk1Y2QiLCJmaXJzdE5hbWUiOiJUaGVlcmFzYWsiLCJsYXN0TmFtZSI6IlR1YnJpdCIsInJvbGVzIjpbImFkbWluIl0sImlhdCI6MTYzNDg1NjMyNCwiZXhwIjoxNjQyMDU2MzI0fQ.yPvp-t5yJN_Vu1yYCgZOhxB4m7qRAXsZMl4jPujGuhU'
+            'Authorization': token
         }
     };
     request(options, function (error, response) {

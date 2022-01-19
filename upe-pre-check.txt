@@ -1,0 +1,65 @@
+show interface desc | in {{}}
+show vrf all | in lte
+show interface descript | in "Te0/5/0/7.501"
+show route vrf lte 10.47.0.84
+show route vrf lte longer-prefixes 10.47.0.84/30
+show route vrf lte 10.124.112.224
+show route vrf lte longer-prefixes 10.124.112.224/28
+show run interface BVI18405
+show run l2vpn | in 18405 | in 10.122.0.78
+show run l2vpn | in lte_C405_Vlan501
+
+interface TenGigE0/5/0/7.501 l2transport
+ description lte_C405_501
+ encapsulation dot1q 501
+ rewrite ingress tag pop 1 symmetric
+exit
+
+interface BVI18405
+ description SVI for lte_L3 C405
+ mtu 1598
+ vrf lte
+ ipv4 address 10.124.112.226 255.255.255.240
+exit
+
+l2vpn
+ bridge group lte
+  bridge-domain lte_18405
+   mtu 1584
+   interface TenGigE0/5/0/7.501
+    storm-control multicast pps 2000
+    storm-control broadcast pps 2000
+   exit
+   vfi lte_C405_Vlan501
+    neighbor 10.122.0.78 pw-id 18405
+     pw-class U-PE
+    exit
+   exit
+   routed interface BVI18405
+   exit
+  exit
+ exit
+exit
+router vrrp
+ interface BVI18405
+  address-family ipv4
+   vrrp 30 - > 50 AJ
+    priority 254
+    preempt delay 90
+    address 10.124.112.225
+   exit
+  exit
+ !
+!
+
+router static
+ vrf lte
+  address-family ipv4 unicast
+   10.47.0.84/30 10.124.112.228
+  exit
+ exit
+exit
+
+
+show vrrp brief | i BV18405
+show route vrf lte 10.47.0.84
